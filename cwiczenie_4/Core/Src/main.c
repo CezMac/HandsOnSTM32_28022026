@@ -43,8 +43,8 @@
 UART_HandleTypeDef huart2;
 
 /* USER CODE BEGIN PV */
-extern bool greenLedFlag;
-extern bool redLedFlag;
+extern volatile bool greenLedFlag;
+extern volatile bool redLedFlag;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -57,23 +57,7 @@ static void MX_USART2_UART_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-void blinkRedLed(void)
-{
-	if(greenLedFlag == true)
-	{
-	  HAL_GPIO_TogglePin(LED_GREEN_GPIO_Port, LED_GREEN_Pin);
-	  greenLedFlag = false;
-	}
-}
 
-void blinkGreenLed(void)
-{
-	if(redLedFlag == true)
-	{
-		HAL_GPIO_TogglePin(LED_RED_GPIO_Port, LED_RED_Pin);
-		redLedFlag = false;
-	}
-}
 /* USER CODE END 0 */
 
 /**
@@ -114,7 +98,7 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	  /*if(greenLedFlag == true)
+	  if(greenLedFlag == true)
 	  {
 		  HAL_GPIO_TogglePin(LED_GREEN_GPIO_Port, LED_GREEN_Pin);
 		  greenLedFlag = false;
@@ -124,10 +108,7 @@ int main(void)
 	  {
 		  HAL_GPIO_TogglePin(RED_LED_GPIO_Port, RED_LED_Pin);
 		  redLedFlag = false;
-	  }*/
-
-	  blinkRedLed();
-	  blinkGreenLed();
+	  }
 
     /* USER CODE END WHILE */
 

@@ -44,8 +44,8 @@
 /* USER CODE BEGIN PV */
 uint32_t redTick;
 uint32_t greenTick;
-bool redLedFlag;
-bool greenLedFlag;
+volatile bool redLedFlag;
+volatile bool greenLedFlag;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
